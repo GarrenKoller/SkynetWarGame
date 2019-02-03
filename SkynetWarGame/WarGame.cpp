@@ -7,7 +7,7 @@
 #include <cstdlib>
 //clock time
 #include <ctime>
-//random number generator 
+//random number generator  
 #include <random>
 
 ////////////////////////////////////////////////////////////////////////////
