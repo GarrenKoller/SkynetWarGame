@@ -17,7 +17,7 @@ using std::endl;
 using std::cout;
 //console in
 using std::cin;
-// string text  
+// string text   
 using std::string;
 //time clock
 using std::time;
