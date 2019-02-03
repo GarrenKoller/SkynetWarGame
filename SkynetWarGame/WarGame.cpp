@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////*include*////////////////////////////////////////
 //text
 #include <string>
 //in and out stream to console
@@ -7,75 +7,127 @@
 #include <cstdlib>
 //clock time
 #include <ctime>
-//random number generator  
+//random Rnum generator 
 #include <random>
 
-////////////////////////////////////////////////////////////////////////////
+///////////////////////*using*/////////////////////////////////////////
 //end of line
 using std::endl;
 //console out
 using std::cout;
 //console in
 using std::cin;
-// string text   
+// string text  
 using std::string;
 //time clock
 using std::time;
-////////////////////////////////////////////////////////////////////////////
+//////////////////////*Start Main()*///////////////////////////////////////////
+
+
 int main() {
+	//Welcome
+	cout << "Welcome to SkyNet \n";
+	system("pause");
+	cout << "\n";
+	//delacreing the seed of rand()
+	srand(time(0) - 64);
+	//calculating a random Rnum 
+	int Rnum = ((rand() % 64) + 1);
 	//grid size	 
 	int lower = 1;
 	int upper = 64;
 	//delacreing the seed of rand()
 	srand(time(0) - 64);
-	//calculating a random number 
-	int number = ((rand() % 64) + 1);
-	int linear
-	////////////////////////////////////////////////////////////////////////////
-	//console out
-	cout << "Welcome to SkyNet \n";
-	system("pause");
-	cout << "\n";
+	//Binary Number Count
+	int Bnum = 0;
+	//Human Number Count
+	int Hnum = 0;
+	//Number guessed
+	int guess;
+	//restart program
+	char choice = 'y';
 
-	////////////////////////////////////////////////////////////////////////////
 	//while somrthing is or isnt happening do this
-	while (upper >= lower) {
-		int search = ((upper - lower) / 2) + lower;
-		////////////////////////////////////////////////////////////////////////////
-		//console out
-		cout << "Location " << search << " has been searched \n";
+			while (choice != 'n'){
+				////////////////*Binary functions*/////////////////////////////////////////
+				while (upper >= lower) {
+					//Binary search
+					int Bsearch = ((upper - lower) / 2) + lower;
+					//if this happens do this
+					if (Bsearch < Rnum) {
+						//increment Bnum 
+						++Bnum;
+						//perform
+						lower = lower + Bsearch;
+					}
+					if (Bsearch > Rnum) { 
+						++Bnum;
+						upper = upper - Bsearch;
+					}
+					//after the if, run this and determine if this if is correct then run this if
+					else if (Bsearch = Rnum) {
+				////////////////////////////////////////////////////////////////////////////////
+				//delacreing the seed of rand()
+				srand(time(0) - 64);
+				//calculating a random Rnum 
+				int Rnum = ((rand() % 64) + 1);
+				//guess
+				cout << "Find the correct location guess between 1-64. ";
+				cin >> guess;
+				//while guess does not = Rnum
+				while (guess != Rnum)
+				{
+				//if guess was higher
+					if (guess > Rnum)
+					{
+				//increment Hnum
+						++Hnum;
+						cout << "Too high, try again: ";
+						cin >> guess;
+					}
+					// if guess is lower than Rnum
+					else if (guess < Rnum)
+					{
+					//increment Hnum
+						++Hnum;
+						cout << "Too low, try again: ";
+						cin >> guess;
 
-		////////////////////////////////////////////////////////////////////////////
-		//if this happens do this
-		if (search < number) {
-			lower = lower + search;
-			cout << "The number that has been randomly selected is in the upper region.\n ";
-			cout << "Now searching agian.\n ";
-			system("pause");
-			cout << "\n";
-		}
-
-		////////////////////////////////////////////////////////////////////////////
-		//if this happens do this
-		if (search > number) {
-			upper = upper - search;
-			cout << "The number that has been randomly selected is in the lower region.\n ";
-			cout << "Now searching agian.\n ";
-			system("pause");
-			cout << "\n";
-		}
-
-		////////////////////////////////////////////////////////////////////////////
-		//after the if, run this and determine if this if is correct then run this if
-		else if (search = number) {
-			cout << "Your number was " << search << "\n\n";
-			system("pause");
-			cout << "\n";
-			//return or stop program			
-			return 0;
+					}
+				}
+				//if guess = Rnum do this
+				if (guess == Rnum)
+				{
+					++Hnum;
+					//displaying
+					cout << "Correct! \n";
+					cout << Bnum << " Binary search(s) preformed \n";
+					cout << Rnum << " linear search(s) preformed \n";
+					cout << Hnum << " Human search(s) preformed \n";
+					
+					system("pause");
+					cout << "\n";
+			
+				}
+				//do checks the condition of the while loop
+				do
+				{
+					//set Hnum and Bnum to zero
+					Hnum = 0;
+					Bnum = 0;
+					cout << "Play again? y/n: ";
+					cin >> choice;
+					//ends program or starts another game
+				} while (choice != 'y' && choice != 'n');
+			}
+			
+			
 		}
 	}
-	//return or stop program	
 	return 0;
-
 }
+
+
+
+
+	
